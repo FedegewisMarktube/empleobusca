@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Postulación | Empleo Busca</title>
+
+  <!-- Mantiene el header parecido a tus páginas -->
+  <link href="./CSS/header_portal.css" rel="stylesheet" type="text/css"/>
+
+  <style>
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: #F6FBFF;
+    color: #1f2a37;
+  }
+
+  .container {
+    width: 1180px;
+    max-width: calc(100% - 32px);
+    margin: 0 auto;
+  }
+
+  .card {
+    margin: 28px auto;
+    max-width: 780px;
+    background: #fff;
+    border: 1px solid #e6edf6;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(13, 56, 120, 0.08);
+    padding: 22px 22px 18px;
+  }
+
+  h1 {
+    margin: 0 0 6px;
+    font-size: 22px;
+    color: #0D3878;
+  }
+
+  .sub {
+    margin: 0 0 14px;
+    color: #516173;
+    font-size: 14px;
+  }
+
+  .offerBox {
+    display: none;
+    background: #F3F8FF;
+    border: 1px solid #d6e6ff;
+    border-radius: 12px;
+    padding: 10px 12px;
+    margin: 10px 0 16px;
+    color: #0b2f66;
+    font-size: 13px;
+    line-height: 1.3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  label {
+    display: block;
+    font-weight: 700;
+    font-size: 13px;
+    margin: 0 0 6px;
+    color: #2b3b4f;
+  }
+
+  input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 12px;
+    border: 1px solid #dbe5f2;
+    border-radius: 12px;
+    font-size: 15px;
+    outline: none;
+    background: #fff;
+  }
+
+  input:focus {
+    border-color: #0D3878;
+    box-shadow: 0 0 0 3px rgba(13,56,120,0.12);
+  }
+
+  .full {
+    margin-top: 14px;
+  }
+
+  .actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .btn {
+    border: 1px solid #0D3878;
+    background: #0D3878;
+    color: #fff;
+    padding: 11px 16px;
+    border-radius: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  .btn.secondary {
+    background: #fff;
+    color: #0D3878;
+  }
+
+  .small {
+    font-size: 12px;
+    color: #6b7786;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 720px) {
+    .grid { grid-template-columns: 1fr; }
+    .actions { flex-direction: column; }
+    .btn { width: 100%; }
+  }
+
+  .modal_backdrop{
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 20, 35, 0.55);
+  display: none;                /* oculto por defecto */
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  z-index: 9999;
+}
+
+.modal_backdrop.show{
+  display: flex;
+}
+
+.modal_card{
+  width: 100%;
+  max-width: 420px;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #e6edf6;
+  box-shadow: 0 18px 60px rgba(0,0,0,0.25);
+  padding: 18px 18px 16px;
+  text-align: center;
+  animation: modalIn .16s ease-out;
+}
+
+@keyframes modalIn{
+  from { transform: translateY(8px); opacity: 0; }
+  to   { transform: translateY(0);   opacity: 1; }
+}
+
+.modal_icon{
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: #0D3878;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 900;
+  margin: 6px auto 10px;
+}
+
+.modal_title{
+  font-size: 18px;
+  font-weight: 900;
+  color: #0D3878;
+  margin-bottom: 6px;
+}
+
+.modal_text{
+  font-size: 14px;
+  color: #516173;
+  margin-bottom: 14px;
+}
+
+.modal_actions{
+  display: flex;
+  justify-content: center;
+}
+.modal_actions {
+  display: flex;
+  justify-content: center; /* 👈 esto lo centra */
+}
+.modal_actions .btn {
+  min-width: 120px;
+}
+
+</style>
+
+</head>
+
+<body>
+  <header class="header_web" id="header_menu">
+    <div class="container">
+      <a class="logo" title="Empleo Busca" href="./home.html" style="display:inline-flex;align-items:center;height:60px;">
+        <img src="./logo_Empleo_Busca.png" alt="Empleo Busca Argentina" style="max-width:240px;width:100%;height:auto;object-fit:contain;display:block;">
+      </a>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="card">
+      <h1>Formulario de postulación</h1>
+      <p>Completá tus datos y enviá tu solicitud.</p>
+
+      <div id="offerInfo" class="offerBox" style="display:none;"></div>
+
+      <form id="formPostulacion">
+  <div class="grid">
+    <div>
+      <label for="nombre">Nombre</label>
+      <input id="nombre" name="nombre" type="text" required />
+    </div>
+
+    <div>
+      <label for="apellido">Apellido</label>
+      <input id="apellido" name="apellido" type="text" required />
+    </div>
+  </div>
+
+  <div class="full">
+    <label for="email">Mail</label>
+    <input id="email" name="email" type="email" required />
+  </div>
+
+  <div class="actions">
+    <button class="btn" type="submit">Enviar</button>
+    <button class="btn secondary" type="button" id="btnCancelar">Cancelar</button>
+  </div>
+
+  <div class="small">Al enviar, tu solicitud se registrará en el sitio.</div>
+</form>
+
+    </div>
+  </div>
+
+  <script>
+    // Mostrar info de oferta si viene por querystring
+    const params = new URLSearchParams(location.search);
+    const oi = params.get("oi") || "";
+    let t = (params.get("t") || "").trim();
+
+    // OJO: params.get() YA viene decodificado, no hace falta decodeURIComponent.
+
+    // Si vino el texto de "reportar aviso", lo descartamos
+    if (/reportar\s+este\s+aviso/i.test(t)) t = "";
+
+    const offerInfo = document.getElementById("offerInfo");
+
+    // Mostrar SOLO el nombre si existe.
+    // Si no existe, igual mostramos algo (para que no quede vacío).
+    if (t) {
+    offerInfo.style.display = "block";
+    offerInfo.textContent = t;
+    } else if (oi) {
+    offerInfo.style.display = "block";
+    offerInfo.textContent = "Postulación";
+    }
+
+    document.getElementById("btnCancelar").addEventListener("click", () => {
+      window.location.href = "./home.html";
+    });
+
+    document.getElementById("formPostulacion").addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const nombre = (document.getElementById("nombre").value || "").trim();
+      const apellido = (document.getElementById("apellido").value || "").trim();
+      const email = (document.getElementById("email").value || "").trim();
+
+      if (!nombre || !apellido || !email) {
+        alert("Completá nombre, apellido y mail.");
+        return;
+      }
+
+      // “Cartel” + OK => vuelve al inicio
+        const modal = document.getElementById("modal_ok_backdrop");
+        const okBtn = document.getElementById("modal_ok_btn");
+
+        // mostrar modal
+        modal.classList.add("show");
+        modal.setAttribute("aria-hidden", "false");
+
+        // OK => volver al inicio (ajustá si tu home está en otra ruta)
+        okBtn.onclick = () => {
+        window.location.href = "./home.html";
+        };
+    });
+  </script>
+  <div id="modal_ok_backdrop" class="modal_backdrop" aria-hidden="true">
+  <div class="modal_card" role="dialog" aria-modal="true" aria-labelledby="modal_ok_title">
+    <div class="modal_icon">✓</div>
+    <div id="modal_ok_title" class="modal_title">Solicitud enviada</div>
+    <div class="modal_text">Su solicitud ha sido enviada.</div>
+
+    <div class="modal_actions">
+      <button id="modal_ok_btn" class="btn">OK</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
