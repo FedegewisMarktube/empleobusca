@@ -1,0 +1,16 @@
+stages:
+  - pages
+
+pages:
+  stage: pages
+  image: alpine:latest
+  script:
+    - rm -rf public
+    - mkdir -p public
+    - apk add --no-cache rsync
+    - rsync -av --delete --exclude public ./ public/
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
