@@ -218,7 +218,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     subtitulo.innerText = cityParam
-    ? 'Buscando solo en Buenos Aires…'
+    ? 'Buscando ofertas…'
     : 'Buscando en todas las ciudades y páginas…';
 
     // ✅ auto-seleccionar primera oferta
