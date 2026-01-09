@@ -5444,5 +5444,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+<script>
+(function () {
+  document.addEventListener("click", function (e) {
+    const a = e.target.closest('a.js-o-link[href]');
+    if (!a) return;
+
+    const href = a.getAttribute("href") || "";
+
+    // Bloquea SOLO si intenta ir a la carpeta de detalle
+    if (href.startsWith("/ofertas-de-trabajo/") || href.includes("/ofertas-de-trabajo/")) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+
+      // opcional: aviso
+      // alert("El detalle de la oferta no está disponible en este sitio.");
+      return false;
+    }
+  }, true);
+})();
+</script>
+
+
 </body>
 </html>
